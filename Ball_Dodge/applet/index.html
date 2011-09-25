@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <!-- charset must remain utf-8 to be handled properly by Processing -->
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <title>P2: Hannah Yu</title>
+
+    <style type="text/css">
+      /* <![CDATA[ */
+	
+	body {
+  	  margin: 0px 0px 0px 0px;
+	  font-family: verdana, geneva, arial, helvetica, sans-serif; 
+	  font-size: 11px; 
+	  background-color: #FFFFFF; 
+	  text-decoration: none; 
+	  font-weight: normal; 
+	  line-height: normal; 
+	}
+		 
+	a          { color: #3399cc; }
+	a:link     { color: #3399cc; text-decoration: underline; }
+	a:visited  { color: #3399cc; text-decoration: underline; }
+	a:active   { color: #3399cc; text-decoration: underline; }
+	a:hover    { color: #3399cc; text-decoration: underline; }
+
+      /* ]]> */
+    </style>    
+  </head>
+
+  <body>
+    <div id="content">
+      <div id="P2_container">
+
+	<!-- This version plays nicer with older browsers, 
+	     but requires JavaScript to be enabled. 
+	     http://java.sun.com/javase/6/docs/technotes/guides/jweb/deployment_advice.html -->
+	<script type="text/javascript"
+		src="http://www.java.com/js/deployJava.js"></script>
+	<script type="text/javascript">
+	  /* <![CDATA[ */
+
+	  var attributes = { 
+            code: 'P2.class',
+            archive: 'P2.jar',
+            width: 600, 
+            height: 600,
+            image: 'loading.gif'
+          };
+          var parameters = { };
+          var version = '1.5';
+          deployJava.runApplet(attributes, parameters, version);
+
+          /* ]]> */
+        </script>
+        
+	<noscript> <div>
+	  <!--[if !IE]> -->
+	  <object classid="java:P2.class" 
+            	  type="application/x-java-applet"
+            	  archive="P2.jar"
+            	  width="600" height="600"
+            	  standby="Loading Processing software..." >
+            
+	    <param name="archive" value="P2.jar" />
+	    
+	    <param name="mayscript" value="true" />
+	    <param name="scriptable" value="true" />
+	    
+	    <param name="image" value="loading.gif" />
+	    <param name="boxmessage" value="Loading Processing software..." />
+	    <param name="boxbgcolor" value="#FFFFFF" />
+	    
+	    <param name="test_string" value="outer" />
+	  <!--<![endif]-->
+
+	    <!-- For more instructions on deployment, 
+		 or to update the CAB file listed here, see:
+		 http://java.sun.com/javase/6/webnotes/family-clsid.html
+		 http://java.sun.com/javase/6/webnotes/install/jre/autodownload.html -->
+	    <object classid="clsid:8AD9C840-044E-11D1-B3E9-00805F499D93"
+		    codebase="http://java.sun.com/update/1.6.0/jinstall-6u20-windows-i586.cab"
+		    width="600" height="600"
+		    standby="Loading Processing software..."  >
+	      
+	      <param name="code" value="P2" />
+	      <param name="archive" value="P2.jar" />
+	      
+	      <param name="mayscript" value="true" />
+	      <param name="scriptable" value="true" />
+	      
+	      <param name="image" value="loading.gif" />
+	      <param name="boxmessage" value="Loading Processing software..." />
+	      <param name="boxbgcolor" value="#FFFFFF" />
+	      
+	      <param name="test_string" value="inner" />
+	      
+	      <p>
+		<strong>
+		  This browser does not have a Java Plug-in.
+		  <br />
+		  <a href="http://www.java.com/getjava" title="Download Java Plug-in">
+		    Get the latest Java Plug-in here.
+		  </a>
+		</strong>
+	      </p>
+	      
+	    </object>
+	    
+	  <!--[if !IE]> -->
+	  </object>
+	  <!--<![endif]-->
+
+	</div> </noscript>
+
+      </div>
+      
+      <p>
+	
+      </p>
+      
+      <p>
+        Source code: <a href="P2.pde">P2</a> <a href="balls.pde">balls</a> <a href="pv.pde">pv</a> <br>
+          <a href="http://www.prism.gatech.edu/~hyu40/CS3451_P2/P2.zip">Full Directory</a>
+      </p>
+      <u>CS 3451 - Fall 2010 taught by Jarek Rossignac</u>
+      <br>
+        Project 2 submitted by Hannah Yu<br>
+          Collaborated with Russell Strauss, Peilong Du, Tyler Dotson, and Wes Anderson<br>
+            <br></br>
+          </br>
+          <b>Problem:</b> Compute and animate free fall motion of missles that hits the target after 2 seconds.<br>
+            <b>Solution:</b> using the formula for projectile motion: <br>
+            Position(time) = time squared / 2 * Gravity + Velocity(time) + initial Position,<br>
+              apply a velocity and acceleration (gravity) to the missles being launched at the target. <br>
+              <br>
+                <b>Pseudocode:</b><br>
+                <br>
+                  class Spring { //reference http://processing.org/learning/topics/springs.html <br>
+                  void update() {<br> //creates inertia for the target ball
+                  ASSIGN <br>
+                  resting position of Y = mouseY;<br>
+                  resting position of X = mouseX;<br>
+                  COMPUTE<br>
+                  force = -k * y; //f = -ky<br>
+                  acceleration = force / mass; //set the acceleration f=ma == a=f/m<br>
+                  velocity of y = damp * (velocity of y + acceleration); //set the velocity<br>
+                  temporary y position = temporary y position + velocity y; //update position<br>
+                  repeat for x's<br>
+                  }<br>
+                  }<br>
+                    <br>
+                  class BALL {<br>
+                  void move(float time, point Target, int i) {<br>
+                  if frame >= 120 {<br>
+                  ASSIGN <br>
+                  Center point to Home point;<br>
+                  Velocity = aim vector;<br>
+                  reset frame;<br>
+                  }<br>
+                  else {<br>
+                  REASSIGN <br>
+                    Velocity y component = Velocity y component + time*Gravity y component;  //apply gravity acceleration<br> 
+                  Center x component = Center x component + time*Velocity x component;<br>
+                  Center y component = Center y component + 1/2*Gravity y component*time squared + time*Velocity y component;<br>
+                    }<br>
+                      }<br>
+                        }<br>
+                          <br>
+                  pt predict() { //predict target location and aim there 2 seconds late<br>
+                  SET <br> 
+                  point TargetCenter = P(Target temporary x position, Target temporary Y position);<br>
+                  point previousTargetCenter = P(mouseX, mouseY);<br>
+                  vector PREDICT = vector(TC, pTC);<br>
+                  }<br>
+                    <br>
+                  
+                  vec aim(Home point, Target point, int i) { //apply gravity to the ball's trajectory<br>
+                  if ball shooting from right corner {<br>
+                    COMPUTE <br>
+                      Velocity x component = (Target x component - width)*(1/2);<br>
+                    Velocity y component = (Target y component - height - 2*(Gravity y component))*(1/2);<br>
+                    initial Velocity = vector(Velocity x and y);<br>
+                    }<br>
+                    
+                  reverse for left corner<br>
+                    <br>
+                  
+                  processCollisions() { <br>
+                  point TargetCenter = P(Target temporary x position, Target temporary Y position);<br>
+                  for each missle {<br>
+                  if the distance between the Target Center and Missle Center is less than the diameter of the ball {<br>
+                  add to points counter;<br>
+                  change boolean value to check collision to TRUE;<br>
+                  change color of missile;<br>
+                  }<br>
+                  if they are not colliding {<br>
+                  change boolean value to check collision to FALSE;<br>
+                  change color back to pink;<br>
+                  }<br>
+                  }<br>
+                  }<br>
+                    <br>
+                  
+                  <b>How-to-play:</b>
+                      <br>
+                  Move cursor to move the green target ball around. <br> When you hit a pink ball, you get a point!<br>  Collect points until you get tired.<br>
+                    <br>
+
+                      <b>Extra Credit:</b>
+                      <br>Missiles change colors when colliding with target.<br></br>
+                  <br>
+                 
+    </div>
+  </body>
+</html>
